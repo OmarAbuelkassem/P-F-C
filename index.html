@@ -7,7 +7,7 @@
 <html>
 
 <head>
-	<title>PFCrews</title>
+	<title>PFC-Crews</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/main.css" />
@@ -20,7 +20,7 @@
 
 	<!-- Header -->
 	<header id="header">
-		<h1>PFCrews</h1>
+		<h1>PFC-Crews</h1>
 		<nav>
 			<ul>
 				<li><a href="#intro">Home</a></li>
@@ -43,7 +43,7 @@
   border-radius: 5px;
   position: relative;
   z-index: 1;
-">PFCrews</h2>
+">PFC-Crews</h2>
 				<h1 style="font-size: xx-large;   color: white;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);">
 					Unlock the machine's potential
@@ -60,24 +60,24 @@
 	<section id="one" class="main style2 right dark fullscreen">
 		<div class="content box style2">
 			<header>
-				<h2>About PFCrews</h2>
+				<h2>About PFC</h2>
 			</header>
 			<p>
-				At PFCrews, we’re more than just a service provider — we’re machine whisperers.
+				At PFC, we’re more than just a service provider — we’re machine whisperers. <br>
 
-				Born from a deep passion for precision and industrial problem-solving, CREWS
+				Born from a deep passion for precision and industrial problem-solving, PFC
 				exists
 				to unlock the full potential of machines through expert maintenance and reverse
 				engineering. Whether it’s breathing new life into aging equipment or recreating
 				critical parts from scratch, we bring machines back stronger, smarter, and more
-				efficient.
+				efficient. <br>
 
 
 
 				From preventive maintenance to full reverse engineering projects, we speak the
-				language of machines — and we listen closely.
+				language of machines — and we listen closely. <br>
 
-				CREWS — Unlocking Machines’ Potential.
+				PFC — Unlocking Machines’ Potential.
 			</p>
 		</div>
 		<a href="#work" class="button style2 down anchored">Next</a>
@@ -157,7 +157,7 @@
 				<!-- <li><a href="#" class="icon brands fa-whatsapp"><span class="label">Whatsapp</span></a></li>
 				<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
 				<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li> -->
-				<li>&copy; 2025 Crews. All rights reserved.</li>
+				<li>&copy; 2025 PFC. All rights reserved.</li>
 				<!-- <li>Design: <a href="https://html5up.net">HTML5 UP</a></li> -->
 			</ul>
 		</address>
@@ -210,7 +210,30 @@
 				});
 		}
 	</script>
+	<script>
+		// Function to remove specific URL parameters
+		function cleanUrlParameters() {
+			const url = new URL(window.location.href);
+			let paramsChanged = false;
 
+			// Check for and remove 'fbclid'
+			if (url.searchParams.has('fbclid')) {
+				url.searchParams.delete('fbclid');
+				paramsChanged = true;
+			}
+
+			// If any parameters were removed, update the URL in the browser
+			if (paramsChanged && window.history.replaceState) {
+				const newUrl = url.pathname + url.search + url.hash;
+				window.history.replaceState({ path: newUrl }, '', newUrl);
+			}
+		}
+
+		// Run the function once the DOM is fully loaded
+		document.addEventListener('DOMContentLoaded', cleanUrlParameters);
+	</script>
 </body>
+
+
 
 </html>
