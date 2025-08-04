@@ -2540,7 +2540,7 @@ address .multi-line span {
 /* Cursor Container Styles */
 .cursor {
 	position: relative;
-	width: 14em;
+	max-width: 90vw;
 	/* This width should be carefully chosen to match your final text length */
 	margin: 0 auto;
 	border-right: 2px solid rgba(255, 255, 255, .75);
@@ -2551,61 +2551,66 @@ address .multi-line span {
 	white-space: nowrap;
 	/* Prevents text from wrapping to the next line */
 	overflow: hidden;
-	/* Hides text outside the 'width' during typing animation */
-	/* transform: translateY(-50%); */
-	/* Removed this if it's not needed for vertical alignment */
-	/* If it was for vertical centering, consider flexbox or grid */
+
+	white-space: normal;
 }
 
 /* Class to apply the animations */
 .typewriter-animation {
-	/*
-     * typewriter animation:
-     * - 5s duration
-     * - steps(50) for typewriter effect (adjust 50 to match approximate characters for smooth typing)
-     * - 1s delay before typing starts
-     * - forwards: keeps the final state (width: 100%) after animation
-     *
-     * blinkingCursor animation:
-     * - 500ms duration per blink cycle
-     * - steps(30): ensures a crisp on/off blink
-     * - 6s delay: (5s typewriter duration + 1s typewriter delay) - starts when typing is done
-     * - 6 iterations: This creates 3 full blinks (6s / 500ms = 12 half-blinks, but we want 3 full blinks after it starts)
-     * More accurately, 6 iterations means it will go through the 'from' and 'to' states 3 times each.
-     * So, border-right-color will be transparent after the 6th iteration.
-     * Adjust this number (must be an even number if you want to end on transparent)
-     * e.g., for 1 full blink (1s duration after typing), use 2 iterations.
-     * for 2 full blinks (2s duration after typing), use 4 iterations.
-     * - both: ensures the animation applies styles before and after it runs (holds the final state)
-     */
+
 	animation:
-		typewriter 5s steps(50) 0.1s forwards,
-		blinkingCursor 500ms steps(30) 3s 2 normal both;
+		typewriter 2s steps(50) 0.1s forwards,
+		blinkingCursor 300ms steps(30) 3s 2 normal both;
 	/* 3 full blinks after typing finishes */
 }
 
-/* Keyframes for the typewriter effect (text appearing) */
 @keyframes typewriter {
 	from {
 		width: 0;
-		/* Start with no width, text is hidden */
 	}
 
 	to {
 		width: 80%;
-		/* Expand to full width, revealing text */
 	}
 }
 
-/* Keyframes for the blinking cursor */
 @keyframes blinkingCursor {
 	from {
 		border-right-color: rgba(255, 255, 255, .75);
-		/* Cursor visible */
 	}
 
 	to {
 		border-right-color: transparent;
-		/* Cursor invisible */
+	}
+}
+
+@media (min-width: 768px) {
+
+	.cursor {
+		position: relative;
+		width: 14em;
+		/* This width should be carefully chosen to match your final text length */
+		margin: 0 auto;
+		border-right: 2px solid rgba(255, 255, 255, .75);
+		/* Initial cursor color */
+		font-size: 30px;
+		/* Adjust font size to match your text */
+		text-align: center;
+		white-space: nowrap;
+		/* Prevents text from wrapping to the next line */
+		overflow: hidden;
+		/* Hides text outside the 'width' during typing animation */
+		/* transform: translateY(-50%); */
+		/* Removed this if it's not needed for vertical alignment */
+		/* If it was for vertical centering, consider flexbox or grid */
+		white-space: nowrap;
+		/* Force no wrap only on larger screens */
+	}
+
+	.typewriter-animation {
+
+		animation:
+			typewriter 5s steps(50) 0.1s forwards,
+			blinkingCursor 500ms steps(30) 3s 2 normal both;
 	}
 }
